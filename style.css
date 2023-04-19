@@ -84,6 +84,8 @@ body{
 
 .project-name-heading{
     font-size: 30px;
+    text-align: center;
+    padding: 10px;
 }
 
 .project-description{
