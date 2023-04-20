@@ -2,10 +2,12 @@
 
 :root[theme="dark"]{
     --theme-switch-bg: #717463;
-    --theme-switch-icon-color-moon: #e0e6c4 ;
+    --theme-switch-icon-color-moon: #e0e6c4;
     --theme-switch-icon-color-sun: #00000000;
+    --project-container-gradient-bottom: #404040;
     --page-bg-color:#272822;
     --text-color: #ffffff;
+    --shadow-color: #000000;
     --personal-links-bg-color: var(--theme-switch-bg);
     --personal-links-icon-color: var(--theme-switch-icon-color-moon);
 }
@@ -13,9 +15,11 @@
 :root[theme="light"]{
     --theme-switch-bg: #e0e6c4;
     --theme-switch-icon-color-moon: #00000000;
-    --theme-switch-icon-color-sun: #717463 ;
+    --theme-switch-icon-color-sun: #717463;
+    --project-container-gradient-bottom: #d0d0d0;
     --page-bg-color:#ffffff;
     --text-color: #000000;
+    --shadow-color: #000000;
     --personal-links-bg-color: var(--theme-switch-bg);
     --personal-links-icon-color: var(--theme-switch-icon-color-sun);
 }
@@ -157,16 +161,15 @@ p#short_description{
     cursor: pointer;
     width: 30%;
     height: 80%;
-    box-shadow: 0px 0px 15px var(--text-color);
     overflow: hidden;
     max-height: 600px;
-    background: linear-gradient(to bottom, var(--page-bg-color), var(--personal-links-bg-color) 90%);
+    background: linear-gradient(to bottom, var(--page-bg-color), var(--project-container-gradient-bottom) 90%);
 }
 
 .project-entry[expanded="true"]{
     height:auto;
     width: 80%;
-    box-shadow: 0px 0px 25px var(--text-color);
+    
     margin-bottom: 100px;
 }
 
@@ -175,7 +178,7 @@ p#short_description{
 }
 
 .project-entry{
-
+    box-shadow: 0px 0px 25px var(--shadow-color);
     min-width:20rem;
     display:grid;
     justify-items: center;
@@ -197,7 +200,7 @@ p#short_description{
 
 .project-entry[expanded="false"]:hover {
   transform: rotate(3deg);
-  box-shadow: 0px 0px 25px var(--text-color);
+  box-shadow: 0px 0px 25px var(--shadow-color);
 }
 
 .project-name-heading{
@@ -322,6 +325,7 @@ canvas#background-canvas{
                 border-color .4s ease-in-out,
                 fill 6s ease-in-out,
                 transform .4s ease-in-out !important;
+    filter: blur(64px);
 }
 
 div#background{

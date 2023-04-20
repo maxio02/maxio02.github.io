@@ -9,7 +9,7 @@ const switchTheme = () => {
     newTheme = (theme === 'light') ? 'dark' : 'light'
 
     rootElem.setAttribute('theme', newTheme)
-    dotsColor = getComputedStyle(document.documentElement).getPropertyValue('--text-color');
+    updateColor();
 }
 
 

@@ -1,5 +1,5 @@
 var particles = [];
-var particleCount = 20;
+var particleCount = 40;
 var canvas = document.getElementById('background-canvas');
 var ctx = canvas.getContext('2d');
 var image = document.getElementById('shrek');
@@ -16,7 +16,7 @@ function getRandomInt(min, max) {
 
 
 function particle() {
-    this.radius = getRandomInt(20, 40);
+    this.radius = getRandomInt(canvas.width/30, canvas.width/10);
     this.x = getRandomInt(this.radius, canvas.width - this.radius);
     this.y = getRandomInt(this.radius, canvas.height - this.radius);
 
@@ -27,8 +27,7 @@ function particle() {
 
     this.velocity_x = -2 + Math.random() * 4
     this.velocity_y = -2 + Math.random() * 4
-
-    this.color = dotsColor + getRandomInt(20, 128).toString(16);
+    this.colorMod = getRandomInt(20, 127).toString(16);
     
     this.blur = getRandomInt(10, 40);
 
@@ -36,7 +35,7 @@ function particle() {
         //ctx.filter = "blur(16px)";
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, false);
-        ctx.fillStyle = this.color;
+        ctx.fillStyle = dotsColor + this.colorMod ;
         ctx.fill();
         ctx.closePath();
     }
@@ -88,13 +87,16 @@ function clearCanvas() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
-function redrawBg() {
+function updateCanvasSize() {
     clearCanvas();
     canvas.width = canvas.getBoundingClientRect().width;
     canvas.height = canvas.getBoundingClientRect().height;
-    dotsColor = getComputedStyle(document.documentElement).getPropertyValue('--text-color');
     particles = [];
     drawParticles();
+}
+
+function updateColor() {
+    dotsColor = getComputedStyle(document.documentElement).getPropertyValue('--text-color');
 }
 
 function nextFrame() {
@@ -106,9 +108,11 @@ function nextFrame() {
     requestAnimationFrame(nextFrame);
 }
 
+
+
 addEventListener("resize", (event) => function(){
-    createParticles();
-    redrawBg();
+    //createParticles();
+    updateCanvasSize();
     
 });
 createParticles();
