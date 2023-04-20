@@ -9,7 +9,10 @@ const switchTheme = () => {
     newTheme = (theme === 'light') ? 'dark' : 'light'
 
     rootElem.setAttribute('theme', newTheme)
+    redrawBg();
 }
+
+
 
 
 const projectEntries = document.querySelectorAll('.project-entry');
@@ -47,7 +50,7 @@ projectEntries.forEach(entry => {
 
 document.querySelector('#theme-switch').addEventListener('click',switchTheme)
 
-document.querySelector('#main-container').addEventListener('click', exitItem, { capture: true });
-
+document.querySelector('#background').addEventListener('click', exitItem, { capture: true });
+document.querySelector('#projects-container').addEventListener('click', exitItem, { capture: true });
 
 
