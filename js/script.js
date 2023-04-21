@@ -18,6 +18,7 @@ const switchTheme = () => {
 const projectEntries = document.querySelectorAll('.project-entry');
 
 function expandItem(clickedItem) {
+  console.log(clickedItem)
     clickedItem.setAttribute('expanded', 'true')
     $('#robotArmTurntable').turntable();
     const projectEntries = document.querySelectorAll('.project-entry');
@@ -52,5 +53,4 @@ document.querySelector('#theme-switch').addEventListener('click',switchTheme)
 
 document.querySelector('#background').addEventListener('click', exitItem, { capture: true });
 document.querySelector('#projects-container').addEventListener('click', exitItem, { capture: true });
-
-
+document.querySelector('#landing-page-container').addEventListener('click', exitItem, { capture: true });

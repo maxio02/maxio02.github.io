@@ -1,10 +1,12 @@
 var particles = [];
-var particleCount = 40;
+const particleCount = 40;
 var canvas = document.getElementById('background-canvas');
 var ctx = canvas.getContext('2d');
 var image = document.getElementById('shrek');
 canvas.width = canvas.getBoundingClientRect().width;
 canvas.height = canvas.getBoundingClientRect().height;
+
+const fps = 60;
 
 var dotsColor = getComputedStyle(document.documentElement).getPropertyValue('--text-color');
 
@@ -92,6 +94,7 @@ function updateCanvasSize() {
     canvas.width = canvas.getBoundingClientRect().width;
     canvas.height = canvas.getBoundingClientRect().height;
     particles = [];
+    createParticles();
     drawParticles();
 }
 
@@ -99,30 +102,25 @@ function updateColor() {
     dotsColor = getComputedStyle(document.documentElement).getPropertyValue('--text-color');
 }
 
-function nextFrame() {
+function animate() {
     particles.forEach(particle => {
         particle.update();
         clearCanvas();
         drawParticles();
     });
-    requestAnimationFrame(nextFrame);
+    setTimeout(() => {
+        requestAnimationFrame(animate);
+      }, 1000 / fps);
 }
 
+window.addEventListener("resize", updateCanvasSize);
 
 
-addEventListener("resize", (event) => function(){
-    //createParticles();
-    updateCanvasSize();
-    
-});
 createParticles();
 drawParticles();
-requestAnimationFrame(nextFrame);
+requestAnimationFrame(animate);
 
 
-// fix container not exiting when clicked on landing page
-// make size of containers 100% on mobile
 // SHREK MODE??
-// fix icons on mobile, change the css back
-
-// somehow make the difftent pages accesible via links, and make the page work without javascript
+//save the scroll distance on mobile, when exiting come back to the right height
+//make the page work without javascript
