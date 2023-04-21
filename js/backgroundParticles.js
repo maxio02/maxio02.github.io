@@ -16,7 +16,7 @@ function getRandomInt(min, max) {
 
 
 function particle() {
-    this.radius = getRandomInt(canvas.width/30, canvas.width/10);
+    this.radius = getRandomInt(canvas.width/30, canvas.width/20);
     this.x = getRandomInt(this.radius, canvas.width - this.radius);
     this.y = getRandomInt(this.radius, canvas.height - this.radius);
 
@@ -118,3 +118,11 @@ addEventListener("resize", (event) => function(){
 createParticles();
 drawParticles();
 requestAnimationFrame(nextFrame);
+
+
+// fix container not exiting when clicked on landing page
+// make size of containers 100% on mobile
+// SHREK MODE??
+// fix icons on mobile, change the css back
+
+// somehow make the difftent pages accesible via links, and make the page work without javascript
