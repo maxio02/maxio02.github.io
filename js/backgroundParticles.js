@@ -5,7 +5,7 @@ var ctx = canvas.getContext('2d');
 var image = document.getElementById('shrek');
 canvas.width = canvas.getBoundingClientRect().width;
 canvas.height = canvas.getBoundingClientRect().height;
-
+var width = $(window).width(), height = $(window).height();
 const fps = 60;
 
 var dotsColor = getComputedStyle(document.documentElement).getPropertyValue('--text-color');
@@ -93,6 +93,7 @@ function updateCanvasSize() {
     clearCanvas();
     canvas.width = canvas.getBoundingClientRect().width;
     canvas.height = canvas.getBoundingClientRect().height;
+    width = $(window).width(), height = $(window).height();
     particles = [];
     createParticles();
     drawParticles();
@@ -108,12 +109,15 @@ function animate() {
         clearCanvas();
         drawParticles();
     });
+    if($(window).width() != width || $(window).height() != height){
+        updateCanvasSize();
+      }
+
     setTimeout(() => {
         requestAnimationFrame(animate);
       }, 1000 / fps);
 }
 
-window.addEventListener("resize", updateCanvasSize);
 
 
 createParticles();

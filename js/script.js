@@ -18,25 +18,31 @@ const switchTheme = () => {
 const projectEntries = document.querySelectorAll('.project-entry');
 
 function expandItem(clickedItem) {
-  console.log(clickedItem)
     clickedItem.setAttribute('expanded', 'true')
     $('#robotArmTurntable').turntable();
+    
     const projectEntries = document.querySelectorAll('.project-entry');
+    setTimeout(() => {
     projectEntries.forEach(entry => {
       if (entry !== clickedItem) {
         entry.setAttribute('visible', "false")
       }
     });
+  },400);
 
   }
 
 
 
   const exitItem = () => {
-    projectEntries.forEach(entry => {
-          entry.setAttribute('visible', "true")
-          entry.setAttribute('expanded', 'false')
-  });
+    var expandedEntry = document.querySelector('[expanded="true"]');
+    expandedEntry.setAttribute('expanded', 'false')
+    setTimeout(() => {
+      projectEntries.forEach(entry => {
+        entry.setAttribute('visible', "true")
+});
+    }, 400);
+
 }
 
 

@@ -32,7 +32,7 @@ body{
     transition: color .4s ease-in-out,
                 background-color .4s ease-in-out,
                 border-color .4s ease-in-out,
-                fill 6s ease-in-out,
+                fill .6s ease-in-out,
                 transform .4s ease-in-out !important;
     margin: 0;
 }
@@ -130,14 +130,13 @@ p#short_description{
     list-style-type: none;
     border-radius: 50px;
     background-color: var(--project-container-gradient-bottom);
-    transition: color .4s ease-in-out,
-                background-color .4s ease-in-out,
-                border-color .4s ease-in-out,
-                fill 0.3s ease-in-out,
-                box-shadow 0.3s ease-in-out,
+    transition:
                 width 0.3s ease-in-out,
                 height 0.3s ease-in-out,
-                transform .3s ease-in-out !important;
+                transform 0.4s ease-in-out,
+                /* background-color 0.4s ease-in-out, */
+                box-shadow 0.4s ease-in-out;
+                
     z-index: 2;
     margin-bottom: 100px;
     
@@ -153,18 +152,21 @@ p#short_description{
     text-align: center;
     padding: 10px;
     font-weight: bold;
+
+
 }
 
 .project-description{
-    padding: 20px;
+    /* padding: 20px; */
     z-index: 1;
-
-
+    width: 86%;
+    font-size: 1.4rem;
 }
 
 .project-additional-photo{
     max-width: 86%;
     padding: 10px;
+    max-height: 30rem;
 }
 
 
@@ -238,7 +240,7 @@ p#short_description{
 
 .turntable {
     margin: 30px;
-    width: 94%;
+    max-height: 35rem;
   }
   .turntable ul {
     padding: 0px;
@@ -250,6 +252,7 @@ p#short_description{
   }
   .turntable ul li img {
     width: 100%; 
+    max-height: 35rem;
   }
   .turntable ul li.active {
     display: block; 
@@ -268,7 +271,7 @@ canvas#background-canvas{
     transition: color .4s ease-in-out,
                 background-color .4s ease-in-out,
                 border-color .4s ease-in-out,
-                fill 6s ease-in-out,
+                fill .4s ease-in-out,
                 transform .4s ease-in-out !important;
     filter: blur(4px);
 }
