@@ -1,23 +1,23 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway');
 
-:root[theme="dark"]{
+:root[theme="dark"] {
     --theme-switch-bg: #717463;
     --theme-switch-icon-color-moon: #e0e6c4;
     --theme-switch-icon-color-sun: #00000000;
     --project-container-gradient-bottom: #404040;
-    --page-bg-color:#272822;
+    --page-bg-color: #272822;
     --text-color: #ffffff;
     --shadow-color: #000000;
     --personal-links-bg-color: var(--theme-switch-bg);
     --personal-links-icon-color: var(--theme-switch-icon-color-moon);
 }
 
-:root[theme="light"]{
+:root[theme="light"] {
     --theme-switch-bg: #e0e6c4;
     --theme-switch-icon-color-moon: #00000000;
     --theme-switch-icon-color-sun: #717463;
     --project-container-gradient-bottom: #d0d0d0;
-    --page-bg-color:#ffffff;
+    --page-bg-color: #ffffff;
     --text-color: #000000;
     --shadow-color: #000000;
     --personal-links-bg-color: var(--theme-switch-bg);
@@ -25,84 +25,93 @@
 }
 
 
-body{
+body {
     font-family: Raleway;
-    background-color:var(--page-bg-color) ;
+    background-color: var(--page-bg-color);
     color: var(--text-color);
     transition: color .4s ease-in-out,
-                background-color .4s ease-in-out,
-                border-color .4s ease-in-out,
-                fill .6s ease-in-out,
-                transform .4s ease-in-out !important;
+        background-color .4s ease-in-out,
+        border-color .4s ease-in-out,
+        fill .6s ease-in-out,
+        transform .4s ease-in-out !important;
     margin: 0;
 }
 
-    div#theme-switch {
-        background-color: var(--theme-switch-bg);
-        border-radius: 50px;
-        cursor: pointer;
-        padding: 0.5rem;
-        width: 25;
-        height: 25;
-    
-        position: absolute;
-        right: 0;
-        top: 0;
-        margin: 15;
-        align-items: center;
-    
-        box-shadow: 0px 0px 15px var(--text-color);
-    
-        transition-duration: 0.4s;
+div#theme-switch {
+    background-color: var(--theme-switch-bg);
+    border-radius: 50px;
+    cursor: pointer;
+    padding: 0.5rem;
+    width: 25;
+    height: 25;
 
-        z-index: 2;
-    }
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 15;
+    align-items: center;
 
-    div#personal-links{
-        display: grid;
-        grid-template-columns: 40px 40px; 
-        grid-template-rows: 40px;
-        grid-column-gap: 30px;
-    
-        background-color: var(--personal-links-bg-color);
-        border-radius: 50px;
-        width: 120;
-        height: 40;
-        padding: 0.5rem;
-        left: 0;
-        bottom: 0;
-        margin: 15;
-        box-shadow: 0px 0px 15px var(--text-color);
-        fill: var(--personal-links-icon-color);
-        transition-duration: 0.4s;
-    
-        position: fixed;
-        z-index: 2;
-        
-    }
+    box-shadow: 0px 0px 15px var(--text-color);
 
-h1#title{
+    transition-duration: 0.4s;
+
+    z-index: 2;
+}
+
+div#personal-links-container {
+    display: grid;
+    grid-template-columns: 40px 40px 40px;
+    grid-template-rows: 40px;
+    grid-column-gap: 15px;
+
+    background-color: var(--personal-links-bg-color);
+    border-radius: 50px;
+    width: 150;
+    height: 40;
+    padding: 0.5rem;
+    left: 0;
+    bottom: 0;
+    margin: 15;
+    box-shadow: 0px 0px 15px var(--text-color);
+    transition-duration: 0.4s;
+
+    position: fixed;
+    z-index: 2;
+
+}
+
+div#personal-links-container a svg{
+    fill: var(--personal-links-icon-color);
+    transition-duration: 0.2s;
+}
+
+div#personal-links-container a svg:hover{
+    transform: scale(110%);
+}
+
+h1#title {
     font-family: Raleway;
     font-size: 6rem;
     display: block;
     font-weight: 600;
-    text-shadow: 0px 1px 2px rgba(0,0,0,0.4);
+    text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.4);
 }
-p#short_description{
+
+p#short_description {
     font-family: Raleway;
     font-size: 5rem;
     display: block;
     font-weight: 200;
-    text-shadow: 0px 1px 2px rgba(0,0,0,0.4);
+    text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.4);
     margin-top: 2rem;
 }
 
-.project-preview-img{
+.project-preview-img {
     max-width: 86%;
     padding: 10px;
 }
 
-.project-entry[expanded="false"]{
+.project-entry[expanded="false"] {
     cursor: pointer;
     width: 30%;
     height: 80%;
@@ -111,43 +120,66 @@ p#short_description{
     background: linear-gradient(to bottom, var(--page-bg-color), var(--project-container-gradient-bottom) 90%);
 }
 
-.project-entry[expanded="true"]{
-    height:auto;
+.project-entry[expanded="true"] {
+    height: auto;
     width: 80%;
-    
+
     margin-bottom: 100px;
 }
 
-.project-entry[visible="false"]{
+.project-back-button{
+    background-color: var(--theme-switch-bg);
+    border-radius: 50px;
+    cursor: pointer;
+    padding: 0.5rem;
+    width: 60;
+    height: 60;
+    margin-bottom: 3rem;
+    box-shadow: 0px 0px 15px var(--text-color);
+
+    transition-duration: 0.4s;
+
+    z-index: 2;
+}
+.project-back-button svg{
+    fill: var(--personal-links-icon-color);
+}
+
+.project-back-button:hover{
+    transform: scale(110%);
+}
+
+
+.project-entry[visible="false"] {
     display: none;
 }
 
-.project-entry{
+.project-entry {
     box-shadow: 0px 0px 25px var(--shadow-color);
-    min-width:20rem;
-    display:grid;
+    min-width: 20rem;
+    display: grid;
     justify-items: center;
     list-style-type: none;
     border-radius: 50px;
     background-color: var(--project-container-gradient-bottom);
     transition:
-                width 0.3s ease-in-out,
-                height 0.3s ease-in-out,
-                transform 0.4s ease-in-out,
-                /* background-color 0.4s ease-in-out, */
-                box-shadow 0.4s ease-in-out;
-                
+        width 0.3s ease-in-out,
+        height 0.3s ease-in-out,
+        transform 0.4s ease-in-out,
+        /* background-color 0.4s ease-in-out, */
+        box-shadow 0.4s ease-in-out;
+
     z-index: 2;
     margin-bottom: 100px;
-    
+
 }
 
 .project-entry[expanded="false"]:hover {
-  transform: rotate(3deg);
-  box-shadow: 0px 0px 35px var(--shadow-color);
+    transform: rotate(3deg);
+    box-shadow: 0px 0px 35px var(--shadow-color);
 }
 
-.project-name-heading{
+.project-name-heading {
     font-size: 2.5rem;
     text-align: center;
     padding: 10px;
@@ -156,21 +188,21 @@ p#short_description{
 
 }
 
-.project-description{
+.project-description {
     /* padding: 20px; */
     z-index: 1;
     width: 86%;
     font-size: 1.4rem;
 }
 
-.project-additional-photo{
+.project-additional-photo {
     max-width: 86%;
     padding: 10px;
     max-height: 30rem;
 }
 
 
-#projects-container{
+#projects-container {
     display: flex;
     flex-flow: row wrap;
     row-gap: 40px;
@@ -181,12 +213,12 @@ p#short_description{
     z-index: 0;
 }
 
-#main-container{
+#main-container {
     width: auto;
     height: 100%;
 }
 
-#middle-container{
+#middle-container {
     margin-left: 3%;
     margin-right: 3%;
     margin-top: 6%;
@@ -196,43 +228,33 @@ p#short_description{
 
 
 
-#theme-switch:hover{
+#theme-switch:hover {
     transform: scale(110%);
 
     box-shadow: 0px 0px 20px var(--text-color);
 }
 
-#switch-icon-sun{
+#switch-icon-sun {
     fill: var(--theme-switch-icon-color-sun);
 }
 
-#switch-icon-moon{
+#switch-icon-moon {
     fill: var(--theme-switch-icon-color-moon);
 }
 
-#switch-icon-sun, #switch-icon-moon{
+#switch-icon-sun,
+#switch-icon-moon {
     width: inherit;
     position: absolute;
     transition-duration: 0.4s;
 }
 
-
-
-.link-svg{
-    fill:inherit;
-    transition-duration: 0.2s;
-}
-
-.link-svg:hover{
-    transform: scale(110%);
-}
-
-.mask{
+.mask {
     align-items: center;
     justify-items: center;
     justify-content: center;
     align-content: center;
-    display:grid;
+    display: grid;
     flex-flow: column;
 }
 
@@ -240,43 +262,47 @@ p#short_description{
 
 .turntable {
     margin: 30px;
-    max-height: 35rem;
-  }
-  .turntable ul {
+    max-height: 45rem;
+}
+
+.turntable ul {
     padding: 0px;
-    margin: 0px; 
-  }
-  .turntable ul li {
+    margin: 0px;
+}
+
+.turntable ul li {
     list-style-type: none;
-    display: none; 
-  }
-  .turntable ul li img {
-    width: 100%; 
-    max-height: 35rem;
-  }
-  .turntable ul li.active {
-    display: block; 
-  }
+    display: none;
+}
 
-  .turntable:hover {
+.turntable ul li img {
+    width: 100%;
+    max-height: 45rem;
+}
+
+.turntable ul li.active {
+    display: block;
+}
+
+.turntable:hover {
     cursor: w-resize;
-  }
+}
 
 
 
-canvas#background-canvas{
+canvas#background-canvas {
     width: 100%;
     height: 100%;
-    position:fixed;
+    position: fixed;
     transition: color .4s ease-in-out,
-                background-color .4s ease-in-out,
-                border-color .4s ease-in-out,
-                fill .4s ease-in-out,
-                transform .4s ease-in-out !important;
+        background-color .4s ease-in-out,
+        border-color .4s ease-in-out,
+        fill .4s ease-in-out,
+        transform .4s ease-in-out !important;
     filter: blur(4px);
 }
 
-div#background{
+div#background {
     top: 0px;
     width: 100%;
     height: 100%;
@@ -284,32 +310,33 @@ div#background{
     z-index: -3;
 }
 
-div#landing-page-container{
+div#landing-page-container {
     height: 50%;
-    }
+}
 
-@media only screen and (hover: none) and (pointer: coarse){
-    
-    h1#title{
+@media only screen and (hover: none) and (pointer: coarse) {
+
+    h1#title {
         font-size: 3rem;
         position: relative;
         top: 45px;
         overflow-wrap: normal;
     }
-    p#short_description{
+
+    p#short_description {
         font-size: 1.5rem;
     }
-    
 
-    .project-entry[expanded="false"]{
-        
+
+    .project-entry[expanded="false"] {
+
         z-index: 2;
         margin-bottom: 100px;
         width: 100%;
     }
 
-    .project-entry[expanded="true"]{
-        
+    .project-entry[expanded="true"] {
+
         z-index: 2;
         margin-bottom: 100px;
         width: 100%;
@@ -318,12 +345,12 @@ div#landing-page-container{
     .project-entry[expanded="false"]:hover {
         transform: none;
         box-shadow: 0px 0px 25px var(--shadow-color);
-      }
+    }
 
 
-    #projects-container{
+    #projects-container {
         row-gap: 40px;
         column-gap: 80px;
     }
-        
+
 }

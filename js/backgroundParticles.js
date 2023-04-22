@@ -127,4 +127,9 @@ requestAnimationFrame(animate);
 
 // SHREK MODE??
 //save the scroll distance on mobile, when exiting come back to the right height
-//make the page work without javascript
+
+//add back button
+//instead of calling expanditem change href and call the chack function !
+//add seperate sites
+//add still bg if no js
+//hyperlinks if no js

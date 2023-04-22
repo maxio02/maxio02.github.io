@@ -15,14 +15,18 @@ const switchTheme = () => {
 
 
 
-const projectEntries = document.querySelectorAll('.project-entry');
+
 
 function expandItem(clickedItem) {
+  if(clickedItem.getAttribute('expanded') === 'true'){
+    return;
+  }
     clickedItem.setAttribute('expanded', 'true')
-    $('#robotArmTurntable').turntable();
+    
     
     const projectEntries = document.querySelectorAll('.project-entry');
     setTimeout(() => {
+      $('#robotArmTurntable').turntable();
     projectEntries.forEach(entry => {
       if (entry !== clickedItem) {
         entry.setAttribute('visible', "false")
@@ -32,31 +36,52 @@ function expandItem(clickedItem) {
 
   }
 
+  var backButtons = Array.prototype.slice.call(document.querySelectorAll('.project-back-button'));
+
+  backButtons.forEach(button => {
+    backButtons.push(button.firstElementChild)
+  });
+
+  backButtons.push(document.querySelector('#background'));
+  backButtons.push(document.querySelector('#landing-page-container'));
+  backButtons.push(document.querySelector('#projects-container'));
+  backButtons.push(document.querySelector('#main-container'));
+  
+  backButtons.forEach(button => {
+    button.addEventListener('click', exitItem, false);
+  });
+
+  
+  function exitItem(event) {
+    try {
+      if (!backButtons.includes(event.target)) return;
+
+      var expandedEntry = document.querySelector('[expanded="true"]');
+      expandedEntry.setAttribute('expanded', 'false')
+      setTimeout(() => {
+        projectEntries.forEach(entry => {
+          entry.setAttribute('visible', "true")
+  });
+      }, 400);
 
 
-  const exitItem = () => {
-    var expandedEntry = document.querySelector('[expanded="true"]');
-    expandedEntry.setAttribute('expanded', 'false')
-    setTimeout(() => {
-      projectEntries.forEach(entry => {
-        entry.setAttribute('visible', "true")
-});
-    }, 400);
 
+    } catch (error) {
+      
+    }
 }
+
+
+document.querySelector('#theme-switch').addEventListener('click',switchTheme)
+const projectEntries = document.querySelectorAll('.project-entry');
 
 
 
 projectEntries.forEach(entry => {
   entry.addEventListener('click', function(event) {
     const clickedItem = event.target.closest('.project-entry');
-    expandItem(clickedItem);;
+    expandItem(clickedItem);
   });
 });
 
 
-document.querySelector('#theme-switch').addEventListener('click',switchTheme)
-
-document.querySelector('#background').addEventListener('click', exitItem, { capture: true });
-document.querySelector('#projects-container').addEventListener('click', exitItem, { capture: true });
-document.querySelector('#landing-page-container').addEventListener('click', exitItem, { capture: true });
