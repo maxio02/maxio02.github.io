@@ -300,7 +300,7 @@ canvas#background-canvas {
         border-color .4s ease-in-out,
         fill .4s ease-in-out,
         transform .4s ease-in-out !important;
-    filter: blur(4px);
+    filter: blur(0.3vmax);
 }
 
 div#background {

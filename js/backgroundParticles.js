@@ -2,7 +2,6 @@ var particles = [];
 const particleCount = 40;
 var canvas = document.getElementById('background-canvas');
 var ctx = canvas.getContext('2d');
-var image = document.getElementById('shrek');
 canvas.width = canvas.getBoundingClientRect().width;
 canvas.height = canvas.getBoundingClientRect().height;
 var width = $(window).width(), height = $(window).height();
@@ -18,7 +17,7 @@ function getRandomInt(min, max) {
 
 
 function particle() {
-    this.radius = getRandomInt(canvas.width/30, canvas.width/20);
+    this.radius = getRandomInt(canvas.width / 30, canvas.width / 20);
     this.x = getRandomInt(this.radius, canvas.width - this.radius);
     this.y = getRandomInt(this.radius, canvas.height - this.radius);
 
@@ -27,47 +26,53 @@ function particle() {
         "y": -1 + Math.random() * 2
     };
 
-    this.velocity_x = -2 + Math.random() * 4
-    this.velocity_y = -2 + Math.random() * 4
+    this.velocity_x = -2 + Math.random() * 4;
+    this.velocity_y = -2 + Math.random() * 4;
     this.colorMod = getRandomInt(20, 127).toString(16);
-    
-    this.blur = getRandomInt(10, 40);
 
     this.draw = function () {
         //ctx.filter = "blur(16px)";
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, false);
-        ctx.fillStyle = dotsColor + this.colorMod ;
+        ctx.fillStyle = dotsColor + this.colorMod;
         ctx.fill();
         ctx.closePath();
     }
 
-    this.drawImage = function () {
-        ctx.drawImage(image, this.x, this.y)
-    }
+    // this.drawImage = function () {
+    //     ctx.drawImage(image, this.x, this.y)
+    // }
 
-    this.update = function(){
+    this.update = function () {
         this.checkBoundry();
         this.x += this.velocity_x;
         this.y += this.velocity_y;
     }
 
-    this.changeDir = function (axis){
-        switch (axis){
-        case 'x': this.velocity_x*=(-1);
-        break;
-        case 'y': this.velocity_y*=(-1);
-        break;
+    this.changeDir = function (axis) {
+        switch (axis) {
+            case 'x': this.velocity_x *= (-1);
+                break;
+            case 'y': this.velocity_y *= (-1);
+                break;
         }
 
     }
 
-    this.checkBoundry = function (){
-        if (this.x+this.radius > canvas.width  || this.x - this.radius < 0){
-            this.changeDir('x')
+    this.multCoordinateSystem = function (xMult, yMult) {
+        this.x *= xMult;
+        this.y *= yMult;
+        this.velocity_x *= xMult;
+        this.velocity_y *= yMult;
+        this.radius *= xMult;
+    }
+
+    this.checkBoundry = function () {
+        if (this.x + this.radius > canvas.width || this.x - this.radius < 0) {
+            this.changeDir('x');
         }
-        else if(this.y+ this.radius > canvas.height  || this.y - this.radius < 0){
-            this.changeDir('y')
+        else if (this.y + this.radius > canvas.height || this.y - this.radius < 0) {
+            this.changeDir('y');
         }
     }
 }
@@ -91,11 +96,20 @@ function clearCanvas() {
 
 function updateCanvasSize() {
     clearCanvas();
+    var prevCanaswidth = canvas.width;
+    var prevCanasheight = canvas.height;
     canvas.width = canvas.getBoundingClientRect().width;
     canvas.height = canvas.getBoundingClientRect().height;
+
     width = $(window).width(), height = $(window).height();
-    particles = [];
-    createParticles();
+
+    xMult = canvas.width / prevCanaswidth;
+    yMult = canvas.height / prevCanasheight;
+
+    particles.forEach(particle => {
+        particle.multCoordinateSystem(xMult, yMult);
+    });
+
     drawParticles();
 }
 
@@ -109,13 +123,13 @@ function animate() {
         clearCanvas();
         drawParticles();
     });
-    if($(window).width() != width || $(window).height() != height){
+    if ($(window).width() != width || $(window).height() != height) {
         updateCanvasSize();
-      }
+    }
 
     setTimeout(() => {
         requestAnimationFrame(animate);
-      }, 1000 / fps);
+    }, 1000 / fps);
 }
 
 
