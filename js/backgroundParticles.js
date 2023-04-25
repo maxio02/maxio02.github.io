@@ -62,8 +62,6 @@ function particle() {
     this.multCoordinateSystem = function (xMult, yMult) {
         this.x *= xMult;
         this.y *= yMult;
-        this.velocity_x *= xMult;
-        this.velocity_y *= yMult;
         this.radius *= xMult;
     }
 
@@ -139,11 +137,3 @@ drawParticles();
 requestAnimationFrame(animate);
 
 
-// SHREK MODE??
-//save the scroll distance on mobile, when exiting come back to the right height
-
-//add back button
-//instead of calling expanditem change href and call the chack function !
-//add seperate sites
-//add still bg if no js
-//hyperlinks if no js

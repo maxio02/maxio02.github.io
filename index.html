@@ -10,53 +10,52 @@
     <div id="background">
         <canvas id='background-canvas'></canvas>
     </div>
-    <div style="display:none;">
-        <img id="shrek" src="./images/Shrek.png" width="300" height="227" />
-    </div>
-
     <div id="main-container">
         <header>
             <div>
                 <div id="lang-switch">
 
                 </div>
-                <div id="theme-switch">
-                    <svg id="switch-icon-moon" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 122.88 122.89"
-                        style="enable-background:new 0 0 122.88 122.89" xml:space="preserve">
-                        <g>
-                            <path
-                                d="M49.06,1.27c2.17-0.45,4.34-0.77,6.48-0.98c2.2-0.21,4.38-0.31,6.53-0.29c1.21,0.01,2.18,1,2.17,2.21 c-0.01,0.93-0.6,1.72-1.42,2.03c-9.15,3.6-16.47,10.31-20.96,18.62c-4.42,8.17-6.1,17.88-4.09,27.68l0.01,0.07 c2.29,11.06,8.83,20.15,17.58,25.91c8.74,5.76,19.67,8.18,30.73,5.92l0.07-0.01c7.96-1.65,14.89-5.49,20.3-10.78 c5.6-5.47,9.56-12.48,11.33-20.16c0.27-1.18,1.45-1.91,2.62-1.64c0.89,0.21,1.53,0.93,1.67,1.78c2.64,16.2-1.35,32.07-10.06,44.71 c-8.67,12.58-22.03,21.97-38.18,25.29c-16.62,3.42-33.05-0.22-46.18-8.86C14.52,104.1,4.69,90.45,1.27,73.83 C-2.07,57.6,1.32,41.55,9.53,28.58C17.78,15.57,30.88,5.64,46.91,1.75c0.31-0.08,0.67-0.16,1.06-0.25l0.01,0l0,0L49.06,1.27 L49.06,1.27z" />
-                        </g>
-                    </svg>
-                    <svg id="switch-icon-sun" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                        xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 207.628 207.628" xml:space="preserve">
-                        <circle cx="103.814" cy="103.814" r="45.868" />
-                        <path d="M103.814,157.183c-29.427,0-53.368-23.941-53.368-53.368s23.941-53.368,53.368-53.368s53.368,23.941,53.368,53.368
+                <a class="no-js-link" href="/robot-light.html">
+                    <div id="theme-switch">
+                        <svg id="switch-icon-moon" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 122.88 122.89"
+                            style="enable-background:new 0 0 122.88 122.89" xml:space="preserve">
+                            <g>
+                                <path
+                                    d="M49.06,1.27c2.17-0.45,4.34-0.77,6.48-0.98c2.2-0.21,4.38-0.31,6.53-0.29c1.21,0.01,2.18,1,2.17,2.21 c-0.01,0.93-0.6,1.72-1.42,2.03c-9.15,3.6-16.47,10.31-20.96,18.62c-4.42,8.17-6.1,17.88-4.09,27.68l0.01,0.07 c2.29,11.06,8.83,20.15,17.58,25.91c8.74,5.76,19.67,8.18,30.73,5.92l0.07-0.01c7.96-1.65,14.89-5.49,20.3-10.78 c5.6-5.47,9.56-12.48,11.33-20.16c0.27-1.18,1.45-1.91,2.62-1.64c0.89,0.21,1.53,0.93,1.67,1.78c2.64,16.2-1.35,32.07-10.06,44.71 c-8.67,12.58-22.03,21.97-38.18,25.29c-16.62,3.42-33.05-0.22-46.18-8.86C14.52,104.1,4.69,90.45,1.27,73.83 C-2.07,57.6,1.32,41.55,9.53,28.58C17.78,15.57,30.88,5.64,46.91,1.75c0.31-0.08,0.67-0.16,1.06-0.25l0.01,0l0,0L49.06,1.27 L49.06,1.27z" />
+                            </g>
+                        </svg>
+                        <svg id="switch-icon-sun" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 207.628 207.628"
+                            xml:space="preserve">
+                            <circle cx="103.814" cy="103.814" r="45.868" />
+                            <path d="M103.814,157.183c-29.427,0-53.368-23.941-53.368-53.368s23.941-53.368,53.368-53.368s53.368,23.941,53.368,53.368
                                 S133.241,157.183,103.814,157.183z M103.814,65.446c-21.156,0-38.368,17.212-38.368,38.368s17.212,38.368,38.368,38.368
                                 s38.368-17.212,38.368-38.368S124.97,65.446,103.814,65.446z" />
-                        <path d="M103.814,39.385c-4.142,0-7.5-3.358-7.5-7.5V7.5c0-4.142,3.358-7.5,7.5-7.5s7.5,3.358,7.5,7.5v24.385
+                            <path d="M103.814,39.385c-4.142,0-7.5-3.358-7.5-7.5V7.5c0-4.142,3.358-7.5,7.5-7.5s7.5,3.358,7.5,7.5v24.385
                                 C111.314,36.027,107.956,39.385,103.814,39.385z" />
-                        <path d="M103.814,207.628c-4.142,0-7.5-3.358-7.5-7.5v-24.385c0-4.142,3.358-7.5,7.5-7.5s7.5,3.358,7.5,7.5v24.385
+                            <path d="M103.814,207.628c-4.142,0-7.5-3.358-7.5-7.5v-24.385c0-4.142,3.358-7.5,7.5-7.5s7.5,3.358,7.5,7.5v24.385
                                 C111.314,204.271,107.956,207.628,103.814,207.628z" />
-                        <path d="M200.128,111.314h-24.385c-4.142,0-7.5-3.358-7.5-7.5s3.358-7.5,7.5-7.5h24.385c4.142,0,7.5,3.358,7.5,7.5
+                            <path d="M200.128,111.314h-24.385c-4.142,0-7.5-3.358-7.5-7.5s3.358-7.5,7.5-7.5h24.385c4.142,0,7.5,3.358,7.5,7.5
                                 S204.271,111.314,200.128,111.314z" />
-                        <path d="M31.885,111.314H7.5c-4.142,0-7.5-3.358-7.5-7.5s3.358-7.5,7.5-7.5h24.385c4.142,0,7.5,3.358,7.5,7.5
+                            <path d="M31.885,111.314H7.5c-4.142,0-7.5-3.358-7.5-7.5s3.358-7.5,7.5-7.5h24.385c4.142,0,7.5,3.358,7.5,7.5
                                 S36.027,111.314,31.885,111.314z" />
-                        <path
-                            d="M154.676,60.452c-1.919,0-3.839-0.732-5.303-2.197c-2.929-2.929-2.929-7.678,0-10.606l17.243-17.242
+                            <path
+                                d="M154.676,60.452c-1.919,0-3.839-0.732-5.303-2.197c-2.929-2.929-2.929-7.678,0-10.606l17.243-17.242
                                 c2.929-2.929,7.678-2.93,10.606,0c2.929,2.929,2.929,7.678,0,10.606l-17.243,17.242C158.515,59.72,156.595,60.452,154.676,60.452z" />
-                        <path d="M35.709,179.419c-1.919,0-3.839-0.732-5.303-2.197c-2.929-2.929-2.929-7.678,0-10.606l17.243-17.243
+                            <path d="M35.709,179.419c-1.919,0-3.839-0.732-5.303-2.197c-2.929-2.929-2.929-7.678,0-10.606l17.243-17.243
                                 c2.929-2.929,7.678-2.929,10.606,0c2.929,2.929,2.929,7.678,0,10.606l-17.243,17.243C39.548,178.687,37.629,179.419,35.709,179.419z
                                 " />
-                        <path d="M171.918,179.419c-1.919,0-3.839-0.732-5.303-2.197l-17.243-17.243c-2.929-2.929-2.929-7.678,0-10.606
+                            <path d="M171.918,179.419c-1.919,0-3.839-0.732-5.303-2.197l-17.243-17.243c-2.929-2.929-2.929-7.678,0-10.606
                                 c2.929-2.929,7.678-2.929,10.606,0l17.243,17.243c2.929,2.929,2.929,7.678,0,10.606
                                 C175.757,178.687,173.838,179.419,171.918,179.419z" />
-                        <path
-                            d="M52.952,60.452c-1.919,0-3.839-0.732-5.303-2.197L30.406,41.013c-2.929-2.929-2.929-7.677,0-10.606
+                            <path
+                                d="M52.952,60.452c-1.919,0-3.839-0.732-5.303-2.197L30.406,41.013c-2.929-2.929-2.929-7.677,0-10.606
                                 c2.929-2.929,7.678-2.93,10.606,0l17.243,17.242c2.929,2.929,2.929,7.677,0,10.606C56.791,59.72,54.872,60.452,52.952,60.452z" />
-                    </svg>
-                </div>
+                        </svg>
+                    </div>
+                </a>
             </div>
         </header>
 
@@ -72,147 +71,153 @@
 
             </div>
             <ul id="projects-container">
-                <li class="project-entry" id="robot" expanded="false" visible="true">
-                    <div class="mask">
+                <a class="no-js-link" href="/robot-dark.html">
+                    <li class="project-entry" id="robot" expanded="false" visible="true">
+                        <div class="mask">
 
-                        <p class="project-name-heading">
-                            5-Axis robot arm
-                        </p>
-                        <img class="project-preview-img" src="./images/robot_arm/preview.png">
-                        <p class="project-description">
+                            <p class="project-name-heading">
+                                5-Axis robot arm
+                            </p>
+                            <img class="project-preview-img" src="./images/robot_arm/preview.png">
+                            <p class="project-description">
 
-                            This was the hardest and most time consuming project I have done to date, but along the way
-                            I have learned a lot of useful things.<br>
+                                This was the hardest and most time consuming project I have done to date, but along the
+                                way
+                                I have learned a lot of useful things.<br>
 
-                            I first started by doing extensive research on small form factor robotic arms, and on design
-                            ideas,
-                            I quickly realized that with the size I was going for, it would not be possible to place the
-                            motors on the moving parts of the arm, as they would be too heavy and either the size of the
-                            arm would have to increase or I would have to but expensive motors.<br>
-                            This is why i opted for placing the motors for controlling the shoulder elbow and wrist
-                            joints in the base, as can be seen in the image.
-                            The next step was to get fammiliaraized with linkages and sketch out the basic movement
-                            idea, I did this using fusion360.
+                                I first started by doing extensive research on small form factor robotic arms, and on
+                                design
+                                ideas,
+                                I quickly realized that with the size I was going for, it would not be possible to place
+                                the
+                                motors on the moving parts of the arm, as they would be too heavy and either the size of
+                                the
+                                arm would have to increase or I would have to but expensive motors.<br>
+                                This is why i opted for placing the motors for controlling the shoulder elbow and wrist
+                                joints in the base, as can be seen in the image.
+                                The next step was to get fammiliaraized with linkages and sketch out the basic movement
+                                idea, I did this using fusion360.
 
-                        </p>
-                        <img class="project-additional-photo" src="./images/robot_arm/robot_arm_first_sketch.png">
-                        <p class="project-description">
+                            </p>
+                            <img class="project-additional-photo" src="./images/robot_arm/robot_arm_first_sketch.png">
+                            <p class="project-description">
 
-                            I then jumped right into designing the 3d assembly, where I started with the head assembly,
-                            as I thought that would be the hardest part.
-                            I already considered myself to be quite good at 3d modeling, but I have to say, that I
-                            learned <b> a lot </b> about correct project managment and maintainability, the latter
-                            beaing the most important.
+                                I then jumped right into designing the 3d assembly, where I started with the head
+                                assembly,
+                                as I thought that would be the hardest part.
+                                I already considered myself to be quite good at 3d modeling, but I have to say, that I
+                                learned <b> a lot </b> about correct project managment and maintainability, the latter
+                                beaing the most important.
 
-                        </p>
+                            </p>
+                            <div
+                                style="display: flex; flex-flow: row wrap; justify-items: center; justify-content: center;">
+                                <img style=" width: 45%" class="project-additional-photo"
+                                    src="./images/robot_arm/first_3d_model.png">
+                                <img style=" width: 45%" class="project-additional-photo"
+                                    src="./images/robot_arm/additional_photo_2.jpg">
+                            </div>
+                            <img class="project-additional-photo" src="./images/robot_arm/additional_photo_3.jpg">
+                            <p class="project-description">
+
+                                I then jumped right into designing the 3d assembly, where I started with the head
+                                assembly,
+                                as I thought that would be the hardest part.
+                                I already considered myself to be quite good at 3d modeling, but I have to say, that I
+                                learned <b> a lot </b> about correct project managment and maintainability, the latter
+                                beaing the most important.
+
+                            </p>
+
+                            <img class="project-additional-photo" src="./images/robot_arm/additional_photo_4.jpg">
+
+                            <div id="robotArmTurntable" class="turntable">
+                                <ul>
+                                    <li data-img-src="images/robot_arm/360view/frame.0.png"></li>
+                                    <li data-img-src="images/robot_arm/360view/frame.1.png"></li>
+                                    <li data-img-src="images/robot_arm/360view/frame.2.png"></li>
+                                    <li data-img-src="images/robot_arm/360view/frame.3.png"></li>
+                                    <li data-img-src="images/robot_arm/360view/frame.4.png"></li>
+                                    <li data-img-src="images/robot_arm/360view/frame.5.png"></li>
+                                    <li data-img-src="images/robot_arm/360view/frame.6.png"></li>
+                                    <li data-img-src="images/robot_arm/360view/frame.7.png"></li>
+                                    <li data-img-src="images/robot_arm/360view/frame.8.png"></li>
+                                    <li data-img-src="images/robot_arm/360view/frame.9.png"></li>
+                                    <li data-img-src="images/robot_arm/360view/frame.10.png"></li>
+                                    <li data-img-src="images/robot_arm/360view/frame.11.png"></li>
+                                    <li data-img-src="images/robot_arm/360view/frame.12.png"></li>
+                                    <li data-img-src="images/robot_arm/360view/frame.13.png"></li>
+                                    <li data-img-src="images/robot_arm/360view/frame.14.png"></li>
+                                    <li data-img-src="images/robot_arm/360view/frame.15.png"></li>
+                                    <li data-img-src="images/robot_arm/360view/frame.16.png"></li>
+                                    <li data-img-src="images/robot_arm/360view/frame.17.png"></li>
+                                    <li data-img-src="images/robot_arm/360view/frame.18.png"></li>
+                                    <li data-img-src="images/robot_arm/360view/frame.19.png"></li>
+                                    <li data-img-src="images/robot_arm/360view/frame.20.png"></li>
+                                    <li data-img-src="images/robot_arm/360view/frame.21.png"></li>
+                                    <li data-img-src="images/robot_arm/360view/frame.22.png"></li>
+                                    <li data-img-src="images/robot_arm/360view/frame.23.png"></li>
+                                    <li data-img-src="images/robot_arm/360view/frame.24.png"></li>
+                                    <li data-img-src="images/robot_arm/360view/frame.25.png"></li>
+                                    <li data-img-src="images/robot_arm/360view/frame.26.png"></li>
+                                    <li data-img-src="images/robot_arm/360view/frame.27.png"></li>
+                                    <li data-img-src="images/robot_arm/360view/frame.28.png"></li>
+                                    <li data-img-src="images/robot_arm/360view/frame.29.png"></li>
+                                    <li data-img-src="images/robot_arm/360view/frame.30.png"></li>
+                                    <li data-img-src="images/robot_arm/360view/frame.31.png"></li>
+                                    <li data-img-src="images/robot_arm/360view/frame.32.png"></li>
+                                    <li data-img-src="images/robot_arm/360view/frame.33.png"></li>
+                                    <li data-img-src="images/robot_arm/360view/frame.34.png"></li>
+                                    <li data-img-src="images/robot_arm/360view/frame.35.png"></li>
+                                </ul>
+                            </div>
+                        </div>
                         <div
-                            style="display: flex; flex-flow: row wrap; justify-items: center; justify-content: center;">
-                            <img style=" width: 45%" class="project-additional-photo"
-                                src="./images/robot_arm/first_3d_model.png">
-                            <img style=" width: 45%" class="project-additional-photo"
-                                src="./images/robot_arm/additional_photo_2.jpg">
+                            style="display: flex; flex-flow: row wrap; height: auto; justify-items: center; justify-content: center; margin-bottom:10px">
+                            <img style=" width: 40%" class="project-additional-photo"
+                                src="./images/robot_arm/additional_photo_5.jpg">
+                            <img style=" width: 40%" class="project-additional-photo"
+                                src="./images/robot_arm/additional_photo_6.jpg">
+                            <img style=" width: 40%" class="project-additional-photo"
+                                src="./images/robot_arm/additional_photo_7.jpg">
                         </div>
-                        <img class="project-additional-photo" src="./images/robot_arm/additional_photo_3.jpg">
                         <p class="project-description">
-
-                            I then jumped right into designing the 3d assembly, where I started with the head assembly,
-                            as I thought that would be the hardest part.
-                            I already considered myself to be quite good at 3d modeling, but I have to say, that I
-                            learned <b> a lot </b> about correct project managment and maintainability, the latter
-                            beaing the most important.
-
+                            nbuidfsbdif
                         </p>
 
-                        <img class="project-additional-photo" src="./images/robot_arm/additional_photo_4.jpg">
-
-                        <div id="robotArmTurntable" class="turntable">
-                            <ul>
-                                <li data-img-src="images/robot_arm/360view/frame.0.png"></li>
-                                <li data-img-src="images/robot_arm/360view/frame.1.png"></li>
-                                <li data-img-src="images/robot_arm/360view/frame.2.png"></li>
-                                <li data-img-src="images/robot_arm/360view/frame.3.png"></li>
-                                <li data-img-src="images/robot_arm/360view/frame.4.png"></li>
-                                <li data-img-src="images/robot_arm/360view/frame.5.png"></li>
-                                <li data-img-src="images/robot_arm/360view/frame.6.png"></li>
-                                <li data-img-src="images/robot_arm/360view/frame.7.png"></li>
-                                <li data-img-src="images/robot_arm/360view/frame.8.png"></li>
-                                <li data-img-src="images/robot_arm/360view/frame.9.png"></li>
-                                <li data-img-src="images/robot_arm/360view/frame.10.png"></li>
-                                <li data-img-src="images/robot_arm/360view/frame.11.png"></li>
-                                <li data-img-src="images/robot_arm/360view/frame.12.png"></li>
-                                <li data-img-src="images/robot_arm/360view/frame.13.png"></li>
-                                <li data-img-src="images/robot_arm/360view/frame.14.png"></li>
-                                <li data-img-src="images/robot_arm/360view/frame.15.png"></li>
-                                <li data-img-src="images/robot_arm/360view/frame.16.png"></li>
-                                <li data-img-src="images/robot_arm/360view/frame.17.png"></li>
-                                <li data-img-src="images/robot_arm/360view/frame.18.png"></li>
-                                <li data-img-src="images/robot_arm/360view/frame.19.png"></li>
-                                <li data-img-src="images/robot_arm/360view/frame.20.png"></li>
-                                <li data-img-src="images/robot_arm/360view/frame.21.png"></li>
-                                <li data-img-src="images/robot_arm/360view/frame.22.png"></li>
-                                <li data-img-src="images/robot_arm/360view/frame.23.png"></li>
-                                <li data-img-src="images/robot_arm/360view/frame.24.png"></li>
-                                <li data-img-src="images/robot_arm/360view/frame.25.png"></li>
-                                <li data-img-src="images/robot_arm/360view/frame.26.png"></li>
-                                <li data-img-src="images/robot_arm/360view/frame.27.png"></li>
-                                <li data-img-src="images/robot_arm/360view/frame.28.png"></li>
-                                <li data-img-src="images/robot_arm/360view/frame.29.png"></li>
-                                <li data-img-src="images/robot_arm/360view/frame.30.png"></li>
-                                <li data-img-src="images/robot_arm/360view/frame.31.png"></li>
-                                <li data-img-src="images/robot_arm/360view/frame.32.png"></li>
-                                <li data-img-src="images/robot_arm/360view/frame.33.png"></li>
-                                <li data-img-src="images/robot_arm/360view/frame.34.png"></li>
-                                <li data-img-src="images/robot_arm/360view/frame.35.png"></li>
-                            </ul>
+                        <div class="project-back-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="back-arrow">
+                                <path
+                                    d="M13.83 19a1 1 0 0 1-.78-.37l-4.83-6a1 1 0 0 1 0-1.27l5-6a1 1 0 0 1 1.54 1.28L10.29 12l4.32 5.36a1 1 0 0 1-.78 1.64z"
+                                    data-name="arrow-ios-back"></path>
+                            </svg>
                         </div>
-                    </div>
-                    <div
-                        style="display: flex; flex-flow: row wrap; height: auto; justify-items: center; justify-content: center; margin-bottom:10px">
-                        <img style=" width: 40%" class="project-additional-photo"
-                            src="./images/robot_arm/additional_photo_5.jpg">
-                        <img style=" width: 40%" class="project-additional-photo"
-                            src="./images/robot_arm/additional_photo_6.jpg">
-                        <img style=" width: 40%" class="project-additional-photo"
-                            src="./images/robot_arm/additional_photo_7.jpg">
-                    </div>
-                    <p class="project-description">
-                        nbuidfsbdif
-                    </p>
+                </a>
+                </li>
+                <a class="no-js-link" href="/cube-dark.html">
+                    <li class="project-entry" id="cube" expanded="false" visible="true">
+                        <p class="project-name-heading">
+                            9x9x9 LED cube
+                        </p>
+                        <img class="project-preview-img" src="./images/9x9x9_cube/Schematic.svg">
 
-                    <div class="project-back-button">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="back-arrow">
-                            <g data-name="Layer 2">
+                        <div>
+                            <img class="project-additional-photo" src="./images/9x9x9_cube/PCB_top.svg">
+                            <img class="project-additional-photo" src="./images/9x9x9_cube/PCB_bottom.svg">
+                            <img class="project-additional-photo" src="./images/9x9x9_cube/additional_photo_1.jpg">
+                            <img class="project-additional-photo" src="./images/9x9x9_cube/additional_photo_2.jpg">
+                        </div>
+                        <div class="project-back-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="back-arrow">
                                 <path
                                     d="M13.83 19a1 1 0 0 1-.78-.37l-4.83-6a1 1 0 0 1 0-1.27l5-6a1 1 0 0 1 1.54 1.28L10.29 12l4.32 5.36a1 1 0 0 1-.78 1.64z"
                                     data-name="arrow-ios-back"></path>
-                            </g>
-                        </svg>
-                    </div>
+                            </svg>
+                        </div>
 
-                </li>
-                <li class="project-entry" id="cube" expanded="false" visible="true">
-                    <p class="project-name-heading">
-                        9x9x9 LED cube
-                    </p>
-                    <img class="project-preview-img" src="./images/9x9x9_cube/Schematic.svg">
-
-                    <div>
-                        <img class="project-additional-photo" src="./images/9x9x9_cube/PCB_top.svg">
-                        <img class="project-additional-photo" src="./images/9x9x9_cube/PCB_bottom.svg">
-                        <img class="project-additional-photo" src="./images/9x9x9_cube/additional_photo_1.jpg">
-                        <img class="project-additional-photo" src="./images/9x9x9_cube/additional_photo_2.jpg">
-                    </div>
-                    <div class="project-back-button">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="back-arrow">
-                            <g data-name="Layer 2">
-                                <path
-                                    d="M13.83 19a1 1 0 0 1-.78-.37l-4.83-6a1 1 0 0 1 0-1.27l5-6a1 1 0 0 1 1.54 1.28L10.29 12l4.32 5.36a1 1 0 0 1-.78 1.64z"
-                                    data-name="arrow-ios-back"></path>
-                            </g>
-                        </svg>
-                    </div>
-
-                </li>
+                    </li>
+                </a>
+                <a class="no-js-link" href="/matrix-dark.html">
                 <li class="project-entry" id="entry" expanded="false" visible="true">
                     <p class="project-name-heading">
                         WiFi controlled 10x10 matrix
@@ -221,14 +226,13 @@
                     <img class="project-preview-img" src="./images/WiFi_matrix/preview.jpg">
                     <div class="project-back-button">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="back-arrow">
-                            <g data-name="Layer 2">
-                                <path
-                                    d="M13.83 19a1 1 0 0 1-.78-.37l-4.83-6a1 1 0 0 1 0-1.27l5-6a1 1 0 0 1 1.54 1.28L10.29 12l4.32 5.36a1 1 0 0 1-.78 1.64z"
-                                    data-name="arrow-ios-back"></path>
-                            </g>
+                            <path
+                                d="M13.83 19a1 1 0 0 1-.78-.37l-4.83-6a1 1 0 0 1 0-1.27l5-6a1 1 0 0 1 1.54 1.28L10.29 12l4.32 5.36a1 1 0 0 1-.78 1.64z"
+                                data-name="arrow-ios-back"></path>
                         </svg>
                     </div>
                 </li>
+                </a>
             </ul>
 
 
@@ -295,3 +299,8 @@
 </body>
 
 </html>
+
+<!-- save the scroll distance on mobile, when exiting come back to the right height
+lang switch
+instead of calling expanditem change href and call the chack function !
+add still bg if no js -->

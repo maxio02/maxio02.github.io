@@ -24,7 +24,9 @@
     --personal-links-icon-color: var(--theme-switch-icon-color-sun);
 }
 
-
+html{
+    /* scroll-behavior: smooth; */
+}
 body {
     font-family: Raleway;
     background-color: var(--page-bg-color);
@@ -35,6 +37,7 @@ body {
         fill .6s ease-in-out,
         transform .4s ease-in-out !important;
     margin: 0;
+    
 }
 
 div#theme-switch {
@@ -354,4 +357,9 @@ div#landing-page-container {
         column-gap: 80px;
     }
 
+}
+
+a.no-js-link{
+    color: inherit;
+    text-decoration: none;
 }
