@@ -1,0 +1,43 @@
+<html>
+
+<head>
+    <title>Particle sim</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body id="main_container">
+    <div id="background">
+        <canvas id='background-canvas'></canvas>
+    </div>
+    <div id="menu-button" open="false">
+        <p id="menu-header">Menu</p>
+        
+        <p class = "menu-element">Field Size</p>
+        <div class="slidecontainer menu-element">
+            <input type="range" min="30" max="700" value="100" class="slider menu-element" id="field-size-slider">
+        </div>
+        <p class = "menu-element">Field Strength</p>
+        <div class="slidecontainer menu-element">
+            <input type="range" min="1" max="50" value="10" class="slider menu-element" id="field-strength-slider">
+        </div>
+        <p class = "menu-element">Gravity Strength</p>
+        <div class="slidecontainer menu-element">
+            <input type="range" min="0" max="100" value="10" class="slider menu-element" id="gravity-strength-slider">
+        </div>
+        <p class = "menu-element">Collision Accuracy</p>
+        <div class="entry-container menu-element">
+            <input style = "width: 100%" type="number" value="4" class="menu-element" id="substeps-amount-entry">
+        </div>
+        <p class = "menu-element">Num Of Particles</p>
+        <div class="entry-container menu-element">
+            <input style = "width: 100%" type="number" value="100" class="menu-element" id="particles-amount-entry">
+        </div>
+    </div>
+    <div id="
+    "></div>
+    <script src="./script.js"></script>
+
+</body>
+
+</html>
