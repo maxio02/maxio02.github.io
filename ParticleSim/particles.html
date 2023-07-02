@@ -9,10 +9,26 @@
 <body id="main_container">
     <div id="background">
         <canvas id='background-canvas'></canvas>
+        <canvas id='foreground-canvas'></canvas>
+        
+
     </div>
     <div id="menu-button" open="false">
         <p id="menu-header">Menu</p>
         
+        <p class = "menu-element">Cursor Function</p>
+        <div class="radio-select-container menu-element">
+            <input type = "radio" id = "field-choice-button" name="cursor-function" value="field" checked>
+            <label class="radio-label" for="field-choice-button">Field</label>
+
+            <input type = "radio" id = "gravity-choice-button" name="cursor-function" value="gravity">
+            <label class="radio-label" for="gravity-choice-button">Gravity</label>
+
+            <input type = "radio" id = "throw-choice-button" name="cursor-function" value="throw">
+            <label class="radio-label" for="throw-choice-button">Throw</label>
+
+        </div>
+
         <p class = "menu-element">Field Size</p>
         <div class="slidecontainer menu-element">
             <input type="range" min="30" max="700" value="100" class="slider menu-element" id="field-size-slider">
