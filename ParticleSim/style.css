@@ -33,16 +33,13 @@ canvas{
     border: none;
     color: white;
     padding: 10px 20px;
-    text-align: center;
-    align-items: center;
-    align-items: center;
     text-decoration: none; 
     display: inline-block; 
     font-size: 16px;
     cursor: pointer;
     border-radius: 4px;
     height: 26px;
-    width: 60px;
+    width: 90px;
     position: absolute;
     top: 10px;
     right: 20px;
@@ -54,6 +51,26 @@ canvas{
     margin-top: 0px;
     margin-bottom: 16px;
     font-size: 1.4rem;
+    max-width: 60px;
+    margin-left: 0px;
+    margin-right: 0px;
+    display: inline-block;
+  }
+
+  #menu-back-button{
+    fill: white;
+    height: 26px;
+    width: 26px;
+    position: relative !important;
+    left: 0px !important;
+    display: inline-block;
+  }
+
+  #back-arrow{
+    height: inherit;
+    width: inherit;
+    margin-top: 0px;
+
   }
   #memu-button:hover[open = "false"] {
     background-color: #5e5e5e;
@@ -68,13 +85,12 @@ canvas{
     border: none;
     color: white;
     padding: 10px 20px;
-    text-align: center;
     text-decoration: none; 
     display: inline-block; 
     font-size: 16px;
     cursor: pointer;
     border-radius: 16px;
-    height: 500px;
+    height: 430px;
     width: 200px;
     position: absolute;
     top: 10px;
@@ -97,25 +113,28 @@ canvas{
     background-color: #5e5e5e;
     max-height: 8px;
     border-radius: 4px;
-    
   }
   .slider::-webkit-slider-thumb {
     margin-top: -4px;
     cursor: pointer;
-
-    
   }
 
   .entry-container {
     width: 100%;
   }
 
+  p.menu-element{
+    text-align: center;
+  }
+  div.menu-element{
+    align-content: center;
+  }
   .menu-element {
     display: none;
     font-size: 1.4rem;
     margin-top: 5px;
     margin-bottom: 5px;
-
+    text-align: center;
   }
 
   .radio-label{
