@@ -318,6 +318,11 @@ div#landing-page-container {
     height: auto;
 }
 
+.tab {
+    display: inline-block;
+    margin-left: 40px;
+}
+
 @media only screen and (hover: none) and (pointer: coarse) {
 
     h1#title {
@@ -362,4 +367,13 @@ div#landing-page-container {
 a.no-js-link{
     color: inherit;
     text-decoration: none;
+}
+
+.no-style-link, .no-style-link:visited{
+    color: white;
+    text-decoration: underline; 
+    background-color: transparent; 
+    border: none;
+    padding: 0;
+    margin: 0; 
 }

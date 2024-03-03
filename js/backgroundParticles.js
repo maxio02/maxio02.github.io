@@ -5,7 +5,7 @@ var ctx = canvas.getContext('2d');
 canvas.width = canvas.getBoundingClientRect().width;
 canvas.height = canvas.getBoundingClientRect().height;
 var width = $(window).width(), height = $(window).height();
-const fps = 60;
+const fps = 30;
 
 var dotsColor = getComputedStyle(document.documentElement).getPropertyValue('--text-color');
 
