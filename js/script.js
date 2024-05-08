@@ -32,14 +32,12 @@ function expandItem(clickedItem) {
 
 
   const projectEntries = document.querySelectorAll('.project-entry');
-  setTimeout(() => {
     $('#robotArmTurntable').turntable();
     projectEntries.forEach(entry => {
       if (entry !== clickedItem) {
         entry.setAttribute('visible', "false");
       }
     });
-  }, 400);
 
 }
 
@@ -60,15 +58,10 @@ function exitItem(event) {
     setTimeout(() => {
     window.scrollTo(0,scroll_amount)
     }, 2);
-
-    setTimeout(() => {
       projectEntries.forEach(entry => {
         entry.setAttribute('visible', "true")
         
       });
-    }, 1);
-
-
 
   } catch (error) {
     console.log(error)
