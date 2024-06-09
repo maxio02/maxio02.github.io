@@ -21,17 +21,12 @@ function particle() {
     this.x = getRandomInt(this.radius, canvas.width - this.radius);
     this.y = getRandomInt(this.radius, canvas.height - this.radius);
 
-    this.direction = {
-        "x": -1 + Math.random() * 2,
-        "y": -1 + Math.random() * 2
-    };
-
     this.velocity_x = -2 + Math.random() * 4;
     this.velocity_y = -2 + Math.random() * 4;
+
     this.colorMod = getRandomInt(20, 127).toString(16);
 
     this.draw = function () {
-        //ctx.filter = "blur(16px)";
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, false);
         ctx.fillStyle = dotsColor + this.colorMod;
@@ -39,9 +34,6 @@ function particle() {
         ctx.closePath();
     }
 
-    // this.drawImage = function () {
-    //     ctx.drawImage(image, this.x, this.y)
-    // }
 
     this.update = function () {
         this.checkBoundry();
@@ -63,6 +55,18 @@ function particle() {
         this.x *= xMult;
         this.y *= yMult;
         this.radius *= xMult;
+        if(this.x - this.radius < 0) {
+            this.x = this.radius
+        }
+        if(this.x + this.radius > canvas.width) {
+            this.x = canvas.width - this.radius
+        }
+        if(this.y - this.radius < 0) {
+            this.y = this.radius
+        }
+        if(this.y + this.radius > canvas.height) {
+            this.y = canvas.height - this.radius
+        }
     }
 
     this.checkBoundry = function () {
