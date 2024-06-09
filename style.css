@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway');
 
 :root[theme="dark"] {
-    --theme-switch-bg: #717463;
-    --theme-switch-icon-color-moon: #e0e6c4;
+    --theme-switch-bg: #636374;
+    --theme-switch-icon-color-moon: #cfcfeb;
     --theme-switch-icon-color-sun: #00000000;
-    --project-container-gradient-bottom: #404040;
-    --page-bg-color: #272822;
+    --project-container-gradient-bottom: #333341;
+    --page-bg-color: #222228;
     --text-color: #ffffff;
     --shadow-color: #000000;
     --personal-links-bg-color: var(--theme-switch-bg);
@@ -13,10 +13,10 @@
 }
 
 :root[theme="light"] {
-    --theme-switch-bg: #e0e6c4;
+    --theme-switch-bg: #c9c9c9;
     --theme-switch-icon-color-moon: #00000000;
-    --theme-switch-icon-color-sun: #717463;
-    --project-container-gradient-bottom: #d0d0d0;
+    --theme-switch-icon-color-sun: #8f8f8f;
+    --project-container-gradient-bottom: #dadada;
     --page-bg-color: #ffffff;
     --text-color: #000000;
     --shadow-color: #000000;
