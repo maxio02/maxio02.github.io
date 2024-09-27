@@ -5,7 +5,7 @@ try {
     const itemToOpen = document.getElementById(projectToOpen[1])
     expandItem(itemToOpen);
 } catch (error) {
-    
+
 }
 
 

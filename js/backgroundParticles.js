@@ -1,6 +1,6 @@
 var particles = [];
 const particleCount = 40;
-var canvas = document.getElementById('background-canvas');
+var canvas = document.querySelector('.background-canvas')
 var ctx = canvas.getContext('2d');
 canvas.width = canvas.getBoundingClientRect().width;
 canvas.height = canvas.getBoundingClientRect().height;
@@ -55,16 +55,16 @@ function particle() {
         this.x *= xMult;
         this.y *= yMult;
         this.radius *= xMult;
-        if(this.x - this.radius < 0) {
+        if (this.x - this.radius < 0) {
             this.x = this.radius
         }
-        if(this.x + this.radius > canvas.width) {
+        if (this.x + this.radius > canvas.width) {
             this.x = canvas.width - this.radius
         }
-        if(this.y - this.radius < 0) {
+        if (this.y - this.radius < 0) {
             this.y = this.radius
         }
-        if(this.y + this.radius > canvas.height) {
+        if (this.y + this.radius > canvas.height) {
             this.y = canvas.height - this.radius
         }
     }
@@ -125,9 +125,6 @@ function animate() {
         clearCanvas();
         drawParticles();
     });
-    if ($(window).width() != width || $(window).height() != height) {
-        updateCanvasSize();
-    }
 
     setTimeout(() => {
         requestAnimationFrame(animate);
@@ -141,3 +138,4 @@ drawParticles();
 requestAnimationFrame(animate);
 
 
+window.addEventListener('resize', updateCanvasSize)
