@@ -1,38 +1,32 @@
-var particles = [];
-var particleCount = 60;
-var canvas = document.getElementById('background-canvas');
-var ctx = canvas.getContext('2d');
+"use strict"
+const particles = [];
+const particleCount = 40;
+const canvas = document.querySelector('.background-canvas')
+const ctx = canvas.getContext('2d');
+const fps = 30;
 
-canvas.width = canvas.getBoundingClientRect().width;
-canvas.height = canvas.getBoundingClientRect().height;
+let dotsColor = getComputedStyle(document.documentElement).getPropertyValue('--text-color');
 
-var color = getComputedStyle(document.documentElement).getPropertyValue('--text-color');
-console.log(color)
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min) + min);
+    return Math.trunc(Math.random() * (max - min) + min);
 }
 
+class Particle {
+    constructor() {
+        this.radius = getRandomInt(canvas.width / 30, canvas.width / 20);
+        this.x = getRandomInt(this.radius, canvas.width - this.radius);
+        this.y = getRandomInt(this.radius, canvas.height - this.radius);
 
-function particle() {
-    this.x = getRandomInt(0, canvas.width);
-    this.y = getRandomInt(0, canvas.height);
+        this.velocity_x = -2 + Math.random() * 4;
+        this.velocity_y = -2 + Math.random() * 4;
 
-    this.direction = {
-        "x": -1 + Math.random() * 2,
-        "y": -1 + Math.random() * 2
-    };
+        this.colorMod = getRandomInt(20, 127).toString(16);
 
-    this.velocity_x = Math.random() * 4
-    this.velocity_y = Math.random() * 4
+    }
 
-    this.color = color + getRandomInt(20, 128).toString(16);
-    this.radius = getRandomInt(20, 2);
-    this.blur = getRandomInt(10, 40);
-
-    this.draw = function () {
-        ctx.filter = "blur(16px)";
+    draw() {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, false);
         ctx.fillStyle = this.color;
@@ -40,17 +34,54 @@ function particle() {
         ctx.closePath();
     }
 
-    this.update = function(){
-        this
+
+    update() {
+        this.checkBoundry();
+        this.x += this.velocity_x;
+        this.y += this.velocity_y;
     }
 
-    this
+    changeDir(axis) {
+        switch (axis) {
+            case 'x': this.velocity_x *= (-1);
+                break;
+            case 'y': this.velocity_y *= (-1);
+                break;
+        }
+
+    }
+
+    multCoordinateSystem(xMult, yMult) {
+        this.x *= xMult;
+        this.y *= yMult;
+        this.radius *= xMult;
+        if (this.x - this.radius < 0) {
+            this.x = this.radius;
+        }
+        if (this.x + this.radius > canvas.width) {
+            this.x = canvas.width - this.radius;
+        }
+        if (this.y - this.radius < 0) {
+            this.y = this.radius;
+        }
+        if (this.y + this.radius > canvas.height) {
+            this.y = canvas.height - this.radius;
+        }
+    }
+
+    checkBoundry() {
+        if (this.x + this.radius > canvas.width || this.x - this.radius < 0) {
+            this.changeDir('x');
+        }
+        else if (this.y + this.radius > canvas.height || this.y - this.radius < 0) {
+            this.changeDir('y');
+        }
+    }
 }
 
-
 function createParticles() {
-    for (i = 0; i <= particleCount; i++) {
-        particles.push(new particle());
+    for (let i = 0; i <= particleCount; i++) {
+        particles.push(new Particle());
     }
 }
 
@@ -66,21 +97,43 @@ function clearCanvas() {
 
 function redrawBg() {
     clearCanvas();
-    canvas.width = canvas.getBoundingClientRect().width;
-    canvas.height = canvas.getBoundingClientRect().height;
-    color = getComputedStyle(document.documentElement).getPropertyValue('--text-color');
-    particles = [];
-    createParticles();
+
+    const prevWidth = canvas.width;
+    const prevHeight = canvas.height;
+    const scale = window.devicePixelRatio ?? 1;
+    const width = window.innerWidth * scale;
+    const height = window.innerHeight * scale;
+
+    canvas.width = width;
+    canvas.height = height;
+
+    particles.forEach(particle => {
+        particle.multCoordinateSystem(width / prevWidth, height / prevHeight);
+    });
+
     drawParticles();
 }
 
-function nextFrame() {
+function updateColor() {
+    dotsColor = getComputedStyle(document.documentElement).getPropertyValue('--text-color');
+}
+
+function animate() {
+
     particles.forEach(particle => {
-        
+        particle.update();
     });
+
+    clearCanvas();
+    drawParticles();
+
+    setTimeout(() => {
+        requestAnimationFrame(animate);
+    }, 1000 / fps);
 }
 
 addEventListener("resize", (event) => redrawBg());
 createParticles();
 drawParticles();
-requestAnimationFrame(nextFrame);
+requestAnimationFrame(animate);
+updateCanvasSize();
