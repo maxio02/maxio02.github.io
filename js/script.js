@@ -4,11 +4,39 @@
 
 let scrollAmount = 0;
 let projectCards = [];
+
+/**
+ * 
+ * @param {MouseEvent} event 
+ */
+function handleCardAnimation(event) {
+  const projectCard = event.target.closest('.project-card--collapsed');
+  if (projectCard) {
+    const rect = projectCard.getBoundingClientRect();
+    const center = {
+      y: (rect.bottom - rect.top)/2 + rect.top,
+      x: (rect.right - rect.left)/2 + rect.left
+    }
+    projectCard.style.transition = '';
+    projectCard.style.transform = `perspective(100rem) rotateX(${(center.y - event.clientY) / (rect.height*0.04)}deg) rotateY(${(center.x - event.clientX) / -(rect.width*0.04)}deg) scale(1.1)`;
+  }
+}
+
+function handleCardReset(event) {
+  const projectCard = event.target.closest('.project-card--collapsed');
+  if (projectCard) {
+    projectCard.style.transition = 'transform .5s, box-shadow .4s ease-in-out';
+    setTimeout(() => {
+      projectCard.style.transition = '';
+    },520);
+    projectCard.style.transform = `perspective(100rem) rotateX(0deg) rotateY(0deg)`;
+  }
+
+}
 function onWindowLoad() {
-  console.log('helop')
   const backButtons = [...document.querySelectorAll('.project-card__button--back')];
 
-  backButtons.push(document.querySelector('.projects-container'));
+  backButtons.push(document.querySelector('.main-container'));
   backButtons.forEach(button => {
     button.addEventListener('click', exitItem);
   });
@@ -24,6 +52,13 @@ function onWindowLoad() {
       expandItem(clickedItem);
     });
   }
+
+  //-------------------CARDS ANIMATION-----------------
+
+  const projectsContainerDiv = document.querySelector('.projects-container');
+  projectsContainerDiv.addEventListener('mousemove', handleCardAnimation);
+  projectsContainerDiv.addEventListener('mouseout', handleCardReset)
+  console.log(projectsContainerDiv);
 }
 
 function switchTheme() {
@@ -34,31 +69,45 @@ function switchTheme() {
 
   rootElem.setAttribute('theme', newTheme);
 
-  // Save the theme in a cookie
-  document.cookie = `theme=${newTheme}; path=/; max-age=31536000`; // cookie valid for 1 year
+  localStorage.setItem('theme', newTheme)
   updateColor();
 }
 
-function getCookie(name) {
-  const value = `; ${document.cookie}`;
-  const parts = value.split(`; ${name}=`);
-  if (parts.length === 2) return parts.pop().split(';').shift();
-  return null;
-}
-
-
 function applySavedSettings() {
-  const savedTheme = getCookie('theme');
+  const savedTheme = localStorage.getItem('theme')
   if (savedTheme) {
     document.documentElement.setAttribute('theme', savedTheme);
   }
 }
 
+/**
+ * 
+ * @param {HTMLDivElement} clickedItem 
+ * @returns 
+ */
 function expandItem(clickedItem) {
   if (clickedItem.classList.contains('project-card--expanded')) {
     return;
   }
-
+  const rect = clickedItem.getBoundingClientRect();
+  clickedItem.style.transition = '';
+  clickedItem.style.transform = '';
+  console.log( (rect.top + window.scrollY) + 'px');
+  clickedItem.style.top = (rect.top + window.scrollY) + 'px';
+  clickedItem.style.left = rect.left + 'px';
+  setTimeout(() => {
+    clickedItem.style.top = '40rem';
+    clickedItem.style.left = '50%';
+    clickedItem.style.transform = 'translate(-50%, 0%)';
+    window.scrollTo({
+      top: Math.trunc(window.innerHeight * 0.3), 
+      left: 0, 
+      behavior: 'smooth'
+    });
+    
+  },100)
+  // clickedItem.style.transform = `translate(${rect.left}px, ${rect.top}px)`;
+  clickedItem.style.justifySelf = 'stretch';
   clickedItem.insertAdjacentHTML('beforebegin', '<li class="project-card project-card--collapsed project-card--placeholder"></li>')
 
   clickedItem.style.position = scrollAmount = document.body.scrollTop;
@@ -76,6 +125,9 @@ function expandItem(clickedItem) {
     }
   };
 
+  // const mainContainer = clickedItem.closest('.projects-container');
+  // const cardBoundingRect = clickedItem.getBoundingClientRect()
+  // mainContainer.style.height = cardBoundingRect.height + cardBoundingRect.top + 'px';
 }
 
 function exitItem(event) {
@@ -83,15 +135,16 @@ function exitItem(event) {
   try {
 
     const expandedCard = document.querySelector('.project-card--expanded');
+
+    if (expandedCard === null) return;
+
     expandedCard.classList.add('project-card--collapsed');
     expandedCard.classList.remove('project-card--expanded');
-
+    expandedCard.style.top = '';
+    expandedCard.style.left = '';
+    expandedCard.style.transform = '';
     document.querySelector('.project-card--placeholder').remove();
 
-
-    setTimeout(() => {
-      window.scrollTo(0, scrollAmount);
-    }, 2);
 
     for (const card of projectCards) {
       card.classList.remove('project-card--hidden');

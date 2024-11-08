@@ -1,32 +1,32 @@
-var particles = [];
+"use strict"
+const particles = [];
 const particleCount = 40;
-var canvas = document.querySelector('.background-canvas')
-var ctx = canvas.getContext('2d');
-canvas.width = canvas.getBoundingClientRect().width;
-canvas.height = canvas.getBoundingClientRect().height;
-var width = $(window).width(), height = $(window).height();
+const canvas = document.querySelector('.background-canvas')
+const ctx = canvas.getContext('2d');
 const fps = 30;
 
-var dotsColor = getComputedStyle(document.documentElement).getPropertyValue('--text-color');
+let dotsColor = getComputedStyle(document.documentElement).getPropertyValue('--text-color');
 
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min) + min);
+    return Math.trunc(Math.random() * (max - min) + min);
 }
 
+class Particle {
+    constructor() {
+        this.radius = getRandomInt(canvas.width / 30, canvas.width / 20);
+        this.x = getRandomInt(this.radius, canvas.width - this.radius);
+        this.y = getRandomInt(this.radius, canvas.height - this.radius);
 
-function particle() {
-    this.radius = getRandomInt(canvas.width / 30, canvas.width / 20);
-    this.x = getRandomInt(this.radius, canvas.width - this.radius);
-    this.y = getRandomInt(this.radius, canvas.height - this.radius);
+        this.velocity_x = -2 + Math.random() * 4;
+        this.velocity_y = -2 + Math.random() * 4;
 
-    this.velocity_x = -2 + Math.random() * 4;
-    this.velocity_y = -2 + Math.random() * 4;
+        this.colorMod = getRandomInt(20, 127).toString(16);
 
-    this.colorMod = getRandomInt(20, 127).toString(16);
+    }
 
-    this.draw = function () {
+    draw() {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, false);
         ctx.fillStyle = dotsColor + this.colorMod;
@@ -35,13 +35,13 @@ function particle() {
     }
 
 
-    this.update = function () {
+    update() {
         this.checkBoundry();
         this.x += this.velocity_x;
         this.y += this.velocity_y;
     }
 
-    this.changeDir = function (axis) {
+    changeDir(axis) {
         switch (axis) {
             case 'x': this.velocity_x *= (-1);
                 break;
@@ -51,25 +51,25 @@ function particle() {
 
     }
 
-    this.multCoordinateSystem = function (xMult, yMult) {
+    multCoordinateSystem(xMult, yMult) {
         this.x *= xMult;
         this.y *= yMult;
         this.radius *= xMult;
         if (this.x - this.radius < 0) {
-            this.x = this.radius
+            this.x = this.radius;
         }
         if (this.x + this.radius > canvas.width) {
-            this.x = canvas.width - this.radius
+            this.x = canvas.width - this.radius;
         }
         if (this.y - this.radius < 0) {
-            this.y = this.radius
+            this.y = this.radius;
         }
         if (this.y + this.radius > canvas.height) {
-            this.y = canvas.height - this.radius
+            this.y = canvas.height - this.radius;
         }
     }
 
-    this.checkBoundry = function () {
+    checkBoundry() {
         if (this.x + this.radius > canvas.width || this.x - this.radius < 0) {
             this.changeDir('x');
         }
@@ -79,10 +79,9 @@ function particle() {
     }
 }
 
-
 function createParticles() {
-    for (i = 0; i <= particleCount; i++) {
-        particles.push(new particle());
+    for (let i = 0; i <= particleCount; i++) {
+        particles.push(new Particle());
     }
 }
 
@@ -98,18 +97,18 @@ function clearCanvas() {
 
 function updateCanvasSize() {
     clearCanvas();
-    var prevCanaswidth = canvas.width;
-    var prevCanasheight = canvas.height;
-    canvas.width = canvas.getBoundingClientRect().width;
-    canvas.height = canvas.getBoundingClientRect().height;
 
-    width = $(window).width(), height = $(window).height();
+    const prevWidth = canvas.width;
+    const prevHeight = canvas.height;
+    const scale = window.devicePixelRatio ?? 1;
+    const width = window.innerWidth * scale;
+    const height = window.innerHeight * scale;
 
-    xMult = canvas.width / prevCanaswidth;
-    yMult = canvas.height / prevCanasheight;
+    canvas.width = width;
+    canvas.height = height;
 
     particles.forEach(particle => {
-        particle.multCoordinateSystem(xMult, yMult);
+        particle.multCoordinateSystem(width / prevWidth, height / prevHeight);
     });
 
     drawParticles();
@@ -120,11 +119,13 @@ function updateColor() {
 }
 
 function animate() {
+
     particles.forEach(particle => {
         particle.update();
-        clearCanvas();
-        drawParticles();
     });
+
+    clearCanvas();
+    drawParticles();
 
     setTimeout(() => {
         requestAnimationFrame(animate);
@@ -136,6 +137,6 @@ function animate() {
 createParticles();
 drawParticles();
 requestAnimationFrame(animate);
-
+updateCanvasSize();
 
 window.addEventListener('resize', updateCanvasSize)
